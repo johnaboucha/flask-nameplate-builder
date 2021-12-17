@@ -1,26 +1,26 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_redis import FlaskRedis
+
+from config import Config
 
 # Global libraries
 db = SQLAlchemy()
-r = FlaskRedis()
 
 def init_app():
-	"""Initialize the core application."""
+	"""Create Flask application."""
 	app = Flask(__name__, instance_relative_config=False)
 	app.config.from_object('config.Config')
 
 	# Initialize Plugins
 	db.init_app(app)
-	r.init_app(app)
 
 	with app.app_context():
-		# Include Routes
-		from . import routes
+		# Import routes
+		from .home import home
+		from .nameplates import nameplates
 
 		# Register Blueprints
-		app.register_blueprint(auth.auth_bp)
-		app.register_blueprint(admin.admin_bp)
+		app.register_blueprint(home.home_bp)
+		app.register_blueprint(nameplates.nameplates_bp)
 
 		return app
