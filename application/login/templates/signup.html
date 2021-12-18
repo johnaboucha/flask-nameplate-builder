@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title%}Login{% endblock %}
+{% block title%}Signup{% endblock %}
 
 {% block content %}
 <main>
@@ -10,22 +10,23 @@
 				<div class="error">{{ message }}</div>
 			{% endfor %}
 		{% endif %}
-	{% endwith %}   
-	
+	{% endwith %}
+    
 	<div class="login-signup">
-		<h2>Login</h2>
+		<h2>Member Signup</h2>
 		<form method="POST">
 			{{ form.hidden_tag() }}
 
 			{{ form.username.label(class="form-label") }}
 			{{ form.username(class="form-control") }}
 
+			{{ form.email.label(class="form-label") }}
+			{{ form.email(class="form-control") }}
+
 			{{ form.password.label(class="form-label") }}
 			{{ form.password(class="form-control") }}
 
 			{{ form.submit(class="btn btn-primary") }}
-
-			<p>Not a member? <a href="{{ url_for('login_bp.signup') }}">Signup</a></p>
 		</form>
 	</div>
 </main>

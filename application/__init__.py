@@ -8,19 +8,22 @@ from config import Config
 db = SQLAlchemy()
 login_manager = LoginManager()
 
+
 def init_app():
 	"""Create Flask application."""
 	app = Flask(__name__, instance_relative_config=False)
 	app.config.from_object('config.Config')
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///nameplates.db'
 
 	# Initialize Plugins
 	db.init_app(app)
 	login_manager.init_app(app)
 	login_manager.login_view = 'login_bp.login'
 
+	from application.models import Users
 	@login_manager.user_loader
 	def load_user(user_id):
-		return '' #Users.query.get(int(user_id))
+		return Users.query.get(int(user_id))
 
 	with app.app_context():
 		# Import routes

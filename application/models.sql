@@ -1,0 +1,10 @@
+
+DROP IF EXISTS users;
+
+CREATE TABLE users (
+	id INTEGER PRIMARY KEY,
+	username TEXT NOT NULL UNIQUE,
+	email TEXT NOT NULL UNIQUE,
+	password TEXT,
+	date_added DATETIME
+);
