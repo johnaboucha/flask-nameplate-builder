@@ -1,16 +1,18 @@
 from flask import render_template, request, redirect, flash
 from application import app, db
 from application.models import Nameplates
-from flask_uploads import IMAGES, UploadSet
+from flask_uploads import IMAGES, UploadSet, configure_uploads
 from werkzeug.utils import secure_filename
 from application.forms import NameplateForm
+from application.helpers import allowed_file
+import os
 
+app.config['UPLOADED_PHOTOS_DEST'] = "uploads"
 photos = UploadSet("photos", IMAGES)
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+configure_uploads(app, photos)
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 
 @app.route("/create", methods=['GET', 'POST'])
 def create():
@@ -42,16 +44,16 @@ def create():
 
 			if file and allowed_file(file.filename):
 				filename = secure_filename(file.filename)
-				#file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+				filename = os.path.basename(photos.save(request.files['photo'], app.static_folder+'/uploads'))
 				new_nameplate.photo = filename
 
 		try:
-			photos.save(request.files['photo'])
 			db.session.add(new_nameplate)
 			db.session.commit()
 			return redirect('/nameplates/'+slug)
-		except:
+		except Exception as e:
 			flash("Error: An unkown error occured while trying to create nameplate")
+			print(e)
 			return redirect('/create')
 
 	return render_template('create.html', form=form)

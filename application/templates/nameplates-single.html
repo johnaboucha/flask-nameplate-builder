@@ -33,7 +33,7 @@
 		<div class="body has-image">				
 			<div class="profile-image">
                 {% if nameplate.photo %}
-                    <img src="/uploads/{{ nameplate.photo }}">
+                    <img src="{{ url_for('static', filename='/uploads/'+nameplate.photo ) }}">
                 {% endif %}
             </div>				
             <div class="data">
