@@ -14,15 +14,28 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        <title>{% block title %}{% endblock %} | Nameplates</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='name-plate.css') }}">
+        <title>{% block head %}{% endblock %} | Nameplates</title>
     </head>
 <body>
-    {% include 'header.html' %}
+    <header>
+        <h1><a href="/">Nameplate Builder</a></h1>
+    </header>
 
-    {% include 'nav.html' %}
+    <nav>
+        <a href="/">Home</a>
+        <a href="/create">Create Nameplate</a>
+        <a href="/nameplates">View Plates</a>
+    </nav>
 
-    {% block content %}{% endblock %}
+      {% block body %}{% endblock %}
 
-	{% include 'footer.html' %}
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Nameplate Builder</strong> <small><em>version 2021.12.16</em></small>
+          </p>
+        </div>
+      </footer>
 </body>
 </html>

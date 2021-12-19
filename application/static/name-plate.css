@@ -1,0 +1,494 @@
+/**********  Notes  *************/
+/*
+*
+*	Font Awesome is required in the theme
+*
+*/
+
+.name-plate {
+    background-color: #ecedee !important;
+    width: 8.5in;
+    margin: auto auto;
+    color: #2e2e2e !important;
+}
+
+.name-plate-wrapper {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.name-plate-wrapper *:not(i) {
+    font-family: "Open Sans";
+}
+
+/**********  Header  *************/
+.name-plate .header {
+    height: 0.3in !important;
+    position: relative;
+    z-index: 0;
+}
+
+.name-plate .header .light-gold {
+    background-color: #feda82 !important;
+    height: 0.3in !important;
+    display: inline-block;
+    width: 2in;
+    float: left;
+    z-index: 5;
+}
+
+.name-plate .header .dark-gold.triangle {
+    z-index: 1;
+    width: 1in;
+    height: 0.3in !important;
+    position: absolute;
+    left: 1.4in;
+    width: 0;
+    height: 0;
+    border-left: 0.6in solid transparent !important;
+    border-right: 1.2in solid transparent !important;
+    border-bottom: 0.3in solid #d89b3a !important;
+}
+
+.name-plate .header .maroon {
+    background-color: #98012e !important;
+    height: 0.3in !important;
+    display: inline-block;
+    width: 6.5in;
+    float: right;
+    z-index: 0;
+}
+
+/**********  Body  *************/
+.name-plate.single .body.no-image .data {
+    width: 7.5in;
+    margin-top: 0.1in;
+}
+
+/**********  Footer  *************/
+.name-plate .footer {
+    position: relative;
+    height: 0.6in !important;
+    clear: left;
+    padding: 0px;
+    z-index: 0;
+}
+
+.name-plate .footer .department {
+    background-color: #98012e !important;
+    height: 0.6in !important;
+    padding-left: 0.32in;
+    width: 6.5in;
+    display: inline-block;
+    float: left;
+    line-height: 0.3in !important;
+    font-size: 22pt;	
+    font-weight: 700;
+    font-family: "Open Sans";
+}
+
+.name-plate .footer .department span {
+    color: #feda82 !important;
+}
+
+.name-plate .footer .department .college span {
+    color: white !important;
+}
+
+.name-plate .footer .dark-gold.triangle {
+    z-index: 99;
+    width: 1in;
+    height: 0.6in !important;
+    position: absolute;
+    right: 1.4in;
+    width: 0;
+    height: 0;
+    border-right: 0.6in solid transparent !important;
+    border-left: 1.2in solid transparent !important;
+    border-top: 0.59in solid #d89b3a !important;
+}
+
+.name-plate .footer .light-gold {
+    background-color: #feda82 !important;
+    height: 0.6in !important;
+    display: inline-block;
+    width: 2in;
+    float: right;
+    z-index: 5;
+}
+
+.name-plate .footer-logo {
+    padding-top: 0.12in;
+    margin-left: 0.6in;
+    width: 100px;
+}
+
+.name-plate .footer .college {
+    font-family: "Open Sans";
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 1.1;
+    color: white !important;
+    width: 100%;
+    max-width: 535px;
+    max-height: 20px;
+}
+
+
+/******************************************************
+*
+*	Single User Name Plate
+*
+*******************************************************/
+
+.name-plate.single .body {
+    height: 2.357in;
+}
+
+.name-plate.single .footer {
+    height: 0.58in;
+}
+
+
+.name-plate.single .body {
+    padding-left: 0.32in;
+}
+
+.name-plate.single .profile-image {
+    max-width: 1.4in;
+    display: inline-block;
+    margin-right: 0.2in;
+    margin-top: 0.15in;
+}
+
+.name-plate.single .profile-image img {
+    max-width: 100%;
+    border-radius: 0px;
+}
+
+.name-plate.single .data {
+    vertical-align: top;
+    margin-top: 0.1in;
+    display: inline-block;
+    width: 6.3in;
+}
+
+.name-plate.single .name {
+    font-family: "Open Sans";
+    font-weight: 800;
+    font-size: 34pt;
+    line-height: 1.2;
+    margin-bottom: 0px;
+}
+
+.name-plate.single .details {
+    position: relative;
+    height: 1.5in;
+    z-index: 0;
+}
+
+.name-plate.single .title {
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: 16pt;
+    margin-bottom: 0.325in;
+    max-width: 3.4in;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.name-plate.single .email {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 16pt;
+    line-height: 1;
+    margin-bottom: 5px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.name-plate.single .email i,
+.name-plate.single .phone i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.name-plate.single .phone {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 16pt;
+    line-height: 1;
+    position: absolute;
+    bottom: 5px;
+}
+
+.name-plate.single .hours {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 14pt;
+    line-height: 1.1;
+    position: absolute;
+    top: 3px;
+    left: 3.5in;
+    height: 1in;
+}
+
+.name-plate.single .hours h2 {
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: 16pt;
+    margin-bottom: 5px;
+}
+
+.name-plate .body .hours span {
+    line-height: 1.2;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+/******************************************************
+*
+*	Shared User Name Plate
+*
+*******************************************************/
+.shared-plate-controls {
+    overflow: auto;
+    max-width: 8.5in;
+    margin: 10px auto 40px;
+}
+
+#person-selected-2,
+#department-selected-2 {
+    max-width: 300px;
+}
+
+
+.name-plate.double.large {
+    height: 3.25in;
+}
+
+.name-plate.double .body.first {
+    width: 50%;
+    padding-left: 0.32in;
+    float: left;
+}
+
+.name-plate.double .body {
+    height: 2.357in;
+}
+
+.name-plate.double .profile-image {
+    max-width: 1in;
+    display: inline-block;
+    margin-right: 0.2in;
+    margin-top: 0.15in;
+}
+
+.name-plate.double .data {
+    vertical-align: top;
+    margin-top: 0.1in;
+    display: inline-block;
+    width: 2.6in;
+}
+
+.name-plate.double .name {
+    font-family: "Open Sans";
+    font-weight: 800;
+    font-size: 20pt;
+    line-height: 1.2;
+    margin-bottom: 0px;
+}
+
+.name-plate.double .details {
+    position: relative;
+    height: 1.5in;
+    z-index: 0;
+}
+
+.name-plate.double .title {
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: 14pt;
+    line-height: 1.1;
+    margin-bottom: 0.15in;
+    max-width: 2.4in;
+    display: inline-block;
+}
+
+.name-plate.double .email {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1;
+    position: relative;
+    z-index: 0;
+}
+
+.name-plate.double .email i,
+.name-plate.double .phone i {
+    width: 18px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.name-plate.double .phone {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1;
+    position: relative;
+    z-index: 0;
+}
+
+.name-plate.double .hours {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 14pt;
+    line-height: 1.1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: auto;
+    z-index: 0;
+}
+
+#share-hours-1, #share-hours-2 {
+display: inline-block;
+    margin-left: 6px;
+}
+
+.name-plate.double .hours h2 {
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.name-plate.double .body .hours span {
+    line-height: 1;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+.name-plate.double .hours,
+.name-plate.double .email,
+.name-plate.double .phone {
+    margin-bottom: 7px;
+}
+
+#shared-hours-1,
+#shared-hours-2,
+#shared-email-2,
+#shared-phone-2 {
+    display: inline-block;
+    max-width: 85%;
+}
+
+.name-plate.double .details i {
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+/******************************************************
+*
+*	Small User Name Plate
+*
+*******************************************************/
+
+.name-plate.small {
+    height: 3.063in !important;
+    overflow: hidden;
+}
+
+.name-plate.small .header,
+.name-plate.small .header .light-gold,
+.name-plate.small .header .maroon {
+    height: 0.2in !important;
+}
+
+.name-plate.small .header .dark-gold.triangle {
+    height: 0.2in !important;
+    border-bottom: 0.2in solid #d89b3a !important;
+    border-left: 0.3in solid transparent !important;
+    border-right: 0.8in solid transparent !important;
+    left: 1.7in;
+}
+
+.name-plate.small .body {
+    height: 2.257in;
+}
+
+.name-plate.small.single .profile-image {
+    max-width: 1.3in;
+}
+
+/******************************************************
+*
+*	Closet Name Plate
+*
+*******************************************************/
+
+#closet-plate {
+    padding-left: 0px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 8.5in;
+}
+
+#closet-plate .title {
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 1023px) {
+    .name-plate-wrapper {
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+}
+
+
+@media print {
+
+    header,
+    nav,
+    .sub-header,
+    .nameplate-info,
+    footer,
+    .footer-widgets,
+    .shared-plate-controls {
+        display: none;
+    }
+
+    .name-plate-wrapper {
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .name-plate {
+        width: 8.5in;
+        height: 3.25in;
+        margin: 2.5in auto 0in;
+    }
+
+    main {
+        margin: 0px;
+        padding: 0px;
+        min-height: 0px;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+
+    @page {
+        size: landscape;
+    }
+    
+}

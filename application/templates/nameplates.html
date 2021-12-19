@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}Nameplates{% endblock %}
+
+{% block body %}
+<main>
+    <h2>Viewing All Nameplates</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    {% if nameplates|length < 1 %}
+        <h4>There are no nameplates. Please create one!</h4>
+    {% else %}
+    <h3>
+        <input type="search" placeholder="Search..." class="form-control search-input" data-table="nameplate-list"/>
+    </h3>
+        <table class="table nameplate-list">
+            <thead>
+                <tr>
+                    <th>Person</th>
+                    <th>Title</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            {% for nameplate in nameplates %}
+                <tr>
+                    <td><a href="/nameplates/{{ nameplate.slug }}">{{ nameplate.person_name }}</a></td>
+                    <td>{{ nameplate.title }}</td>
+                    <td>{{ nameplate.date_created.date() }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</main>
+<script>
+    (function(document) {
+        'use strict';
+
+        var TableFilter = (function(myArray) {
+            var search_input;
+
+            function _onInputSearch(e) {
+                search_input = e.target;
+                var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                myArray.forEach.call(tables, function(table) {
+                    myArray.forEach.call(table.tBodies, function(tbody) {
+                        myArray.forEach.call(tbody.rows, function(row) {
+                            var text_content = row.textContent.toLowerCase();
+                            var search_val = search_input.value.toLowerCase();
+                            row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                        });
+                    });
+                });
+            }
+
+            return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('search-input');
+                    myArray.forEach.call(inputs, function(input) {
+                        input.oninput = _onInputSearch;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        document.addEventListener('readystatechange', function() {
+            if (document.readyState === 'complete') {
+                TableFilter.init();
+            }
+        });
+
+    })(document);
+</script>
+{% endblock %}

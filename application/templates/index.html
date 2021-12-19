@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head %}Home{% endblock %}
+
+{% block body %}
+<main>
+    <h2>Welcome!</h2>
+    <p>The Nameplate Builder app lets users manage their office nameplates.</a>
+    <p><b>How to:</b> Simply fill out the <a href="/create">create nameplate</a> form, print it, and cut the edges off.</p>
+    <img src="{{ url_for('static', filename='nameplate.jpg') }}">
+</main>
+{% endblock %}

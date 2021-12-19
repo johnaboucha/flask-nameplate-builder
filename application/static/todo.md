@@ -24,11 +24,6 @@ Nameplate:
 - created_by -
 - date_created
 - date_updated
-- type -
-
-NameplateType
-- name
-- css_file
 
 Department:
 - name

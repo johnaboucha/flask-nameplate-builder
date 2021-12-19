@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block head %}Create{% endblock %}
+
+{% block body %}
+<main>
+    <h2>Create a New Nameplate</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!--<form action="/create" method="POST" id="nameplate-form" enctype=multipart/form-data>
+        <div class="control field">
+            <label class="label">Name<span class="required">*</span></label>
+            <input class="input" type="text" id="nameField" placeholder="John Doe" name="name" required aria-describedby="required-name">
+            <input class="input" type="hidden" id="permalinkField" value="" name="slug">
+            <p class="small">Permalink: <span id="permalink"></span></p>         
+        </div>
+
+        <div class="field">
+            <label class="label">Title<span class="required">*</span></label>
+            <input class="input" type="text" placeholder="Associate Professor" name="title" required aria-describedby="required-name">      
+        </div>
+
+        <div class="field">
+            <label class="label">Email<span class="required">*</span></label>
+            <input class="input" type="text" placeholder="user@d.umn.edu" name="email" required aria-describedby="required-name">       
+        </div>
+
+        <div class="field">
+            <label class="label">Phone</label>
+            <input class="input" type="text" placeholder="218.726.8359" name="phone">      
+        </div>
+
+        <div class="field">
+            <label class="label">Hours</label>
+            <input class="input" type="text" placeholder="8:00 - 10:00 am" name="hours">      
+        </div>
+
+        <div class="field">
+            <label class="label">Photo</label>
+            <input class="file-input" type="file" name="photo" accept="image/*">
+            <p class="small">Max size is 2MB</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Department<span class="required">*</span></label>
+            <input class="input" type="text" placeholder="Astronomy" name="department" required aria-describedby="required-name">       
+        </div>
+
+        <div class="field">
+            <label class="label">College<span class="required">*</span></label>
+            <input class="input" type="text" placeholder="Arts and Sciences" name="college" required aria-describedby="required-name">       
+        </div>
+
+        <p aria-hidden="true" id="required-description">
+            <span class="required">*</span> Required field
+        </p>
+
+        <input type="submit" value="Save">
+    </form> -->
+
+	<form method="POST" id="nameplate-form" enctype=multipart/form-data>
+		{{ form.hidden_tag() }}
+
+		<div class="field">
+			{{ form.name.label(class="required") }}
+			{{ form.name(class="input", placeholder="John Doe", id="nameField") }}
+			<input class="input" type="hidden" id="permalinkField" value="" name="slug">
+            <p class="small">Permalink: <span id="permalink"></span></p> 
+		</div>
+
+		<div class="field">
+			{{ form.title.label(class="required") }}
+			{{ form.title(class="input", placeholder="Associate Professor") }}
+		</div>
+
+		<div class="field">
+			{{ form.email.label(class="required") }}
+			{{ form.email(class="input", placeholder="user@d.umn.edu") }}
+		</div>
+
+		<div class="field">
+			{{ form.phone.label() }}
+			{{ form.phone(class="input", placeholder="218.726.8359") }}
+		</div>
+
+		<div class="field">
+			{{ form.hours.label() }}
+			{{ form.hours(class="input", placeholder="10:00 - 10:30 AM") }}
+		</div>
+
+		<div class="field">
+			{{ form.photo.label(class="photo-label") }}
+			{{ form.photo(accept=".jpg, .jpeg, .png", class="inputfile", id="file-1") }}
+			<label for="file-1"><span>Upload a Photo</span></label>
+		</div>
+
+		<div class="field">
+			{{ form.department.label(class="required") }}
+			{{ form.department(class="input", placeholder="Astronomy") }}
+		</div>
+
+		<div class="field">
+			{{ form.college.label(class="required") }}
+			{{ form.college(class="input", placeholder="Arts and Sciences") }}
+		</div>
+
+		<p aria-hidden="true" id="required-description">
+            <span class="required"></span> Required field
+        </p>
+
+		<div class="field">
+			{{ form.submit() }}
+		</div>
+	</form>
+</main>
+
+<script>
+    function updatePath() {
+        var path = document.getElementById("nameField").value;
+        path = path.replace(/\s+/g, '-');
+        path = path.replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,"");
+        path = path.toLowerCase();
+        document.getElementById("permalink").innerHTML = path;
+        document.getElementById("permalinkField").value = path;
+    }
+    window.onload = (event) => {
+        updatePath();
+
+        const nameInput = document.getElementById("nameField");
+        nameInput.addEventListener('input', function(e) {
+            updatePath();
+        });
+    };
+
+	var inputs = document.querySelectorAll( '.inputfile' );
+	Array.prototype.forEach.call( inputs, function( input )
+	{
+		var label	 = input.nextElementSibling,
+			labelVal = label.innerHTML;
+
+		input.addEventListener( 'change', function( e )
+		{
+			var fileName = '';
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else
+				fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName )
+				label.querySelector( 'span' ).innerHTML = fileName;
+			else
+				label.innerHTML = labelVal;
+		});
+	});
+</script>
+{% endblock %}
