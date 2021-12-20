@@ -3,7 +3,7 @@
 {% block head %}Create{% endblock %}
 
 {% block body %}
-<main>
+
     <h2>Create a New Nameplate</h2>
 
     {% with messages = get_flashed_messages() %}
@@ -68,7 +68,7 @@
 			{{ form.submit() }}
 		</div>
 	</form>
-</main>
+
 
 <script>
     function updatePath() {

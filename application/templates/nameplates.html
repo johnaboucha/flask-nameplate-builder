@@ -3,7 +3,7 @@
 {% block head %}Nameplates{% endblock %}
 
 {% block body %}
-<main>
+
     <h2>Viewing All Nameplates</h2>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -36,7 +36,8 @@
             {% endfor %}
         </table>
     {% endif %}
-</main>
+
+	
 <script>
     (function(document) {
         'use strict';

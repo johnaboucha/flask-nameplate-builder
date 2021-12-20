@@ -10,7 +10,6 @@ from application.forms import LoginForm, SignupForm
 def load_user(user_id):
     return User.query.get(user_id)
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	form = LoginForm()
@@ -21,13 +20,12 @@ def login():
 		if user:
 			if check_password_hash(user.password_hash, form.password.data):
 				login_user(user)
-				flash('success')
+				flash('Loggin in successfully', 'success')
 				return redirect('/')
-
 			else:
-				flash('Login Failed')
+				flash('Login Failed', 'error')
 		else:
-			flash('Login failed')
+			flash('Login failed', 'error')
 
 	return render_template('login.html', form=form)
     

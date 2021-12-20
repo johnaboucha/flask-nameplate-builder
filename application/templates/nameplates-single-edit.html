@@ -3,7 +3,7 @@
 {% block head %}Edit{% endblock %}
 
 {% block body %}
-<main>
+
     <h2>Edit Nameplate: {{ nameplate.person_name }}</h2>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -69,55 +69,6 @@
 		</div>
 	</form>
 
-    <!--<form action="/update/{{ nameplate.id }}" method="POST" id="nameplate-form" enctype=multipart/form-data>
-        <div class="field">
-            <label class="label">Name</label>
-            <input class="input" type="text" id="nameField" name="name" value="{{ nameplate.person_name }}" required>
-            <input class="input" type="hidden" id="permalinkField" value="" name="slug">
-            <p class="permalink"><em>Permalink: <span id="permalink">john-doe</span></em></p>         
-        </div>
-
-        <div class="field">
-            <label class="label">Title</label>
-            <input class="input" type="text" name="title" value="{{ nameplate.title }}" required>      
-        </div>
-
-        <div class="field">
-            <label class="label">Email</label>
-            <input class="input" type="text" name="email" value="{{ nameplate.email }}" required>       
-        </div>
-
-        <div class="field">
-            <label class="label">Phone</label>
-            <input class="input" type="text" name="phone" value="{{ nameplate.phone }}">      
-        </div>
-
-        <div class="field">
-            <label class="label">Hours</label>
-            <input class="input" type="text" name="hours" value="{{ nameplate.hours }}">      
-        </div>
-
-        <div class="field">
-            <label class="label">Photo</label>
-            <input class="file-input" type="file" name="photo" accept="image/*">
-            <p class="small">Max size is 2MB</p>
-        </div>
-
-        <div class="field">
-            <label class="label">Department</label>
-            <input class="input" type="text" name="department" value="{{ nameplate.department }}" required>       
-        </div>
-
-        <div class="field">
-            <label class="label">College</label>
-            <input class="input" type="text" name="college" value="{{ nameplate.college }}" required>       
-        </div>
-
-        <input type="submit" value="Save">
-    </form> -->
-
-
-</main>
 
 <script>
     function updatePath() {

@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, flash
+from flask_login import login_required
 from application import app, db
 from application.models import Nameplates
 from flask_uploads import IMAGES, UploadSet, configure_uploads
@@ -15,6 +16,7 @@ configure_uploads(app, photos)
 
 
 @app.route("/create", methods=['GET', 'POST'])
+@login_required
 def create():
 	form = NameplateForm()
 
