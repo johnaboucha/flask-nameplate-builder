@@ -13,7 +13,63 @@
         {% endif %}
     {% endwith %}
 
-    <form action="/update/{{ nameplate.id }}" method="POST" id="nameplate-form" enctype=multipart/form-data>
+	<form action="/update/{{ nameplate.id }}" method="POST" id="nameplate-form" enctype=multipart/form-data>
+		{{ form.hidden_tag() }}
+
+		<div class="field">
+			{{ form.name.label(class="required") }}
+			{{ form.name(class="input", value=nameplate.person_name, id="nameField") }}
+			<input class="input" type="hidden" id="permalinkField" value="{{ nameplate.slug }}" name="slug">
+            <p class="small">Permalink: <span id="permalink"></span></p> 
+		</div>
+
+		<div class="field">
+			{{ form.title.label(class="required") }}
+			{{ form.title(class="input", value=nameplate.title) }}
+		</div>
+
+		<div class="field">
+			{{ form.email.label(class="required") }}
+			{{ form.email(class="input", value=nameplate.email) }}
+		</div>
+
+		<div class="field">
+			{{ form.phone.label() }}
+			{{ form.phone(class="input", value=nameplate.phone) }}
+		</div>
+
+		<div class="field">
+			{{ form.hours.label() }}
+			{{ form.hours(class="input", value=nameplate.hours) }}
+		</div>
+
+		<div class="field">
+			{{ form.photo.label(class="photo-label") }}
+			{{ form.photo(accept=".jpg, .jpeg, .png", class="inputfile", id="file-1") }}
+			<label for="file-1"><span>Upload a Photo</span></label>
+			<p>{{ nameplate.photo }}</p>
+		</div>
+
+		<div class="field">
+			{{ form.department.label(class="required") }}
+			{{ form.department(class="input", value=nameplate.department) }}
+		</div>
+
+		<div class="field">
+			{{ form.college.label(class="required") }}
+			{{ form.college(class="input", value=nameplate.college) }}
+		</div>
+
+		<p aria-hidden="true" id="required-description">
+            <span class="required"></span> Required field
+        </p>
+
+		<div class="field">
+			{{ form.submit() }}
+		</div>
+	</form>
+
+    <!--<form action="/update/{{ nameplate.id }}" method="POST" id="nameplate-form" enctype=multipart/form-data>
         <div class="field">
             <label class="label">Name</label>
             <input class="input" type="text" id="nameField" name="name" value="{{ nameplate.person_name }}" required>
@@ -58,7 +114,9 @@
         </div>
 
         <input type="submit" value="Save">
-    </form>
+    </form> -->
+
+
 </main>
 
 <script>

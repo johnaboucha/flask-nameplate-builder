@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}Signup{% endblock %}
+
+{% block body %}
+
+<main>
+	<h2>New User Registration</h2>
+
+	<form action="/signup" method="POST">
+		{{ form.hidden_tag() }}
+
+		<div class="field">
+			{{ form.email.label(class="required") }}
+			{{ form.email(class="input", placeholder="user@example.com") }}
+		</div>
+
+		<div class="field">
+			{{ form.username.label(class="required") }}
+			{{ form.username(class="input", placeholder="John Doe") }}
+		</div>
+
+		<div class="field">
+			{{ form.password.label(class="required") }}
+			{{ form.password(class="input", placeholder="John Doe") }}
+		</div>
+
+		<div class="field">
+			{{ form.password_confirm.label(class="required") }}
+			{{ form.password_confirm(class="input", placeholder="John Doe") }}
+		</div>
+
+		<div class="field">
+			{{ form.submit() }}
+		</div>
+	</form>
+</main>
+
+{% endblock %}

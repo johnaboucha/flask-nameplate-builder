@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}Login{% endblock %}
+
+{% block body %}
+
+<main>
+	<h2>Login</h2>
+
+	<form action="/login" method="POST">
+		{{ form.hidden_tag() }}
+
+		<div class="field">
+			{{ form.username.label(class="required") }}
+			{{ form.username(class="input", placeholder="John Doe") }}
+		</div>
+
+		<div class="field">
+			{{ form.password.label(class="required") }}
+			{{ form.password(class="input", placeholder="John Doe") }}
+		</div>
+
+		<div class="field">
+			{{ form.submit() }}
+		</div>
+
+		<p>Don't have an account? <a href="/signup">Signup</a>.</p>
+	</form>
+</main>
+
+{% endblock %}

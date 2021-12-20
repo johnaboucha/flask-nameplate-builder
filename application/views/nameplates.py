@@ -4,6 +4,7 @@ from application.models import Nameplates
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 from werkzeug.utils import secure_filename
 from application.helpers import allowed_file
+from application.forms import NameplateForm
 import os
 
 app.config['UPLOADED_PHOTOS_DEST'] = "uploads"
@@ -11,13 +12,14 @@ photos = UploadSet("photos", IMAGES)
 configure_uploads(app, photos)
 
 @app.route("/nameplates/<slug>/edit")
-def edit_nameplage(slug):
-    nameplate = Nameplates.query.filter_by(slug=slug).first()
+def edit_nameplate(slug):
+	nameplate = Nameplates.query.filter_by(slug=slug).first()
+	form = NameplateForm()
 
-    if nameplate == None:
-        abort(404)
-    else:
-        return render_template('nameplates-single-edit.html', nameplate=nameplate)
+	if nameplate == None:
+		abort(404)
+	else:
+		return render_template('nameplates-single-edit.html', nameplate=nameplate, form=form)
 
 @app.route("/nameplates/<slug>")
 def view_single_nameplate(slug):

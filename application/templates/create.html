@@ -14,57 +14,6 @@
         {% endif %}
     {% endwith %}
 
-    <!--<form action="/create" method="POST" id="nameplate-form" enctype=multipart/form-data>
-        <div class="control field">
-            <label class="label">Name<span class="required">*</span></label>
-            <input class="input" type="text" id="nameField" placeholder="John Doe" name="name" required aria-describedby="required-name">
-            <input class="input" type="hidden" id="permalinkField" value="" name="slug">
-            <p class="small">Permalink: <span id="permalink"></span></p>         
-        </div>
-
-        <div class="field">
-            <label class="label">Title<span class="required">*</span></label>
-            <input class="input" type="text" placeholder="Associate Professor" name="title" required aria-describedby="required-name">      
-        </div>
-
-        <div class="field">
-            <label class="label">Email<span class="required">*</span></label>
-            <input class="input" type="text" placeholder="user@d.umn.edu" name="email" required aria-describedby="required-name">       
-        </div>
-
-        <div class="field">
-            <label class="label">Phone</label>
-            <input class="input" type="text" placeholder="218.726.8359" name="phone">      
-        </div>
-
-        <div class="field">
-            <label class="label">Hours</label>
-            <input class="input" type="text" placeholder="8:00 - 10:00 am" name="hours">      
-        </div>
-
-        <div class="field">
-            <label class="label">Photo</label>
-            <input class="file-input" type="file" name="photo" accept="image/*">
-            <p class="small">Max size is 2MB</p>
-        </div>
-
-        <div class="field">
-            <label class="label">Department<span class="required">*</span></label>
-            <input class="input" type="text" placeholder="Astronomy" name="department" required aria-describedby="required-name">       
-        </div>
-
-        <div class="field">
-            <label class="label">College<span class="required">*</span></label>
-            <input class="input" type="text" placeholder="Arts and Sciences" name="college" required aria-describedby="required-name">       
-        </div>
-
-        <p aria-hidden="true" id="required-description">
-            <span class="required">*</span> Required field
-        </p>
-
-        <input type="submit" value="Save">
-    </form> -->
-
 	<form method="POST" id="nameplate-form" enctype=multipart/form-data>
 		{{ form.hidden_tag() }}
 
