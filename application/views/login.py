@@ -4,6 +4,9 @@ from application import app, db, login_manager
 from application.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from application.forms import LoginForm, SignupForm
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import exc
+from sqlalchemy.exc import IntegrityError
 
 
 @login_manager.user_loader
@@ -48,12 +51,17 @@ def signup():
 		if user is None:
 			hashed_pw = generate_password_hash(form.password.data, "sha256")
 			user = User(username=form.username.data, email=form.email.data, password_hash=hashed_pw)
-			db.session.add(user)
-			db.session.commit()
-			flash('User added')
-		
-	else:
-		print('failed to validate')
+			
+			try:
+				db.session.add(user)
+				db.session.commit()
+				flash('Welcome aboard. Please log in.')
+				return redirect('/login')
+			except IntegrityError:
+				flash('Failed. User already exists', 'error')
+		else:
+			flash('Failed. User already exists', 'error')
+
 		
 
 	return render_template('signup.html', form=form)
