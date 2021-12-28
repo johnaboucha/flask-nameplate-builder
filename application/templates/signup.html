@@ -15,8 +15,18 @@
 	</div>
 
 	<div class="field">
+		{{ form.email_confirm.label(class="required") }}
+		{{ form.email_confirm(class="input", placeholder="user@example.com") }}
+		{% if form.email_confirm.errors %}
+			{% for error in form.email_confirm.errors %}
+				<p class="form-error">{{ error }}</p>
+			{% endfor %}
+		{% endif %}
+	</div>
+
+	<div class="field">
 		{{ form.username.label(class="required") }}
-		{{ form.username(class="input", placeholder="John Doe") }}
+		{{ form.username(class="input", placeholder="johnnydoe") }}
 	</div>
 
 	<div class="field">
@@ -27,6 +37,11 @@
 	<div class="field">
 		{{ form.password_confirm.label(class="required") }}
 		{{ form.password_confirm(class="input", placeholder="John Doe") }}
+		{% if form.password_confirm.errors %}
+		{% for error in form.password_confirm.errors %}
+				<p class="form-error">{{ error }}</p>
+			{% endfor %}
+		{% endif %}
 	</div>
 
 	<div class="field">

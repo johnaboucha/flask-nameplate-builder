@@ -23,7 +23,7 @@ def login():
 		if user:
 			if check_password_hash(user.password_hash, form.password.data):
 				login_user(user)
-				flash('Loggin in successfully', 'success')
+				flash('Logged in successfully', 'success')
 				return redirect('/')
 			else:
 				flash('Login Failed', 'error')
@@ -47,11 +47,17 @@ def signup():
 
 	if form.validate_on_submit():
 
+		# Check if first user sign up
+		user_count = User.query.count()
+
 		user = User.query.filter_by(email=form.email.data).first()
 		if user is None:
 			hashed_pw = generate_password_hash(form.password.data, "sha256")
 			user = User(username=form.username.data, email=form.email.data, password_hash=hashed_pw)
 			
+			if user_count == 0:
+				user.is_admin = True
+
 			try:
 				db.session.add(user)
 				db.session.commit()

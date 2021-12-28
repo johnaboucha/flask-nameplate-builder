@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, flash
 from flask_login import login_required
 from application import app, db
-from application.models import Nameplates
+from application.models import Nameplate
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 from werkzeug.utils import secure_filename
 from application.forms import NameplateForm
@@ -30,7 +30,7 @@ def create():
 		college = request.form['college']
 		department = request.form['department']
 
-		new_nameplate = Nameplates(
+		new_nameplate = Nameplate(
 			person_name=person_name,
 			slug=slug,
 			title=title,

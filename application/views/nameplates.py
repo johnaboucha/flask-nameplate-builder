@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, abort, flash
 from application import app, db
-from application.models import Nameplates
+from application.models import Nameplate
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 from werkzeug.utils import secure_filename
 from application.helpers import allowed_file
@@ -13,7 +13,7 @@ configure_uploads(app, photos)
 
 @app.route("/nameplates/<slug>/edit")
 def edit_nameplate(slug):
-	nameplate = Nameplates.query.filter_by(slug=slug).first()
+	nameplate = Nameplate.query.filter_by(slug=slug).first()
 	form = NameplateForm()
 
 	if nameplate == None:
@@ -23,7 +23,7 @@ def edit_nameplate(slug):
 
 @app.route("/nameplates/<slug>")
 def view_single_nameplate(slug):
-    nameplate = Nameplates.query.filter_by(slug=slug).first()
+    nameplate = Nameplate.query.filter_by(slug=slug).first()
 
     if nameplate == None:
         abort(404)
@@ -33,13 +33,13 @@ def view_single_nameplate(slug):
 
 @app.route("/nameplates")
 def view_nameplates():
-    nameplates = Nameplates.query.order_by(Nameplates.date_created).all()
+    nameplates = Nameplate.query.order_by(Nameplate.date_created).all()
 
     return render_template('nameplates.html', nameplates=nameplates)
 
 @app.route('/nameplates/<slug>/delete')
 def delete(slug):
-	nameplate_to_delete = Nameplates.query.filter_by(slug=slug).first()
+	nameplate_to_delete = Nameplate.query.filter_by(slug=slug).first()
 	image_to_delete = nameplate_to_delete.photo
 
 	if nameplate_to_delete == None:
@@ -59,7 +59,7 @@ def delete(slug):
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
-	nameplate = Nameplates.query.get_or_404(id)
+	nameplate = Nameplate.query.get_or_404(id)
 
 	if request.method == 'POST':
 		nameplate.person_name = request.form['name']
