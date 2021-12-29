@@ -17,6 +17,11 @@ body {
     overflow-y: scroll;
 }
 
+hr {
+	border-top: 1px dashed #E4E5E7;
+	margin: 20px 0;
+}
+
 p {
     line-height: 1.2;
     margin-bottom: 20px;

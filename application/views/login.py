@@ -1,5 +1,5 @@
-from flask import Flask, abort, redirect, flash, render_template
-from flask_login import login_user, logout_user, login_required
+from flask import Flask, abort, redirect, flash, render_template, url_for
+from flask_login import login_user, logout_user, login_required, current_user
 from application import app, db, login_manager
 from application.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,8 +13,13 @@ from sqlalchemy.exc import IntegrityError
 def load_user(user_id):
     return User.query.get(user_id)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
+	if current_user.is_authenticated:
+		return redirect(url_for('/profile'))
+
 	form = LoginForm()
 
 	if form.validate_on_submit():

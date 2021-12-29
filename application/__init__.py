@@ -16,4 +16,4 @@ login_manager.login_view = 'login'
 db = SQLAlchemy(app)
 
 # Import routes
-from application.views import home, nameplates, create, login
+from application.views import home, nameplates, create, login, users

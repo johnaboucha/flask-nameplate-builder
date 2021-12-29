@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}Profile{% endblock %}
+
+{% block body %}
+	<h2>User Profile</h2>
+	<p>Username: {{ user.username }}</p>
+	<p>Email: {{ user.email }}</p>
+	<p>Member since: {{ user.date_created|make_date }} </p>
+	<hr>
+	<h2>Nameplates created by: {{ user.username }}</h2>
+	{% if nameplates %}
+	<table class="table nameplate-list">
+		<thead>
+			<tr>
+				<th>Person</th>
+				<th>Title</th>
+				<th>Created</th>
+			</tr>
+		</thead>
+		{% for nameplate in nameplates %}
+			<tr>
+				<td><a href="/nameplates/{{ nameplate.slug }}">{{ nameplate.person_name }}</a></td>
+				<td>{{ nameplate.title }}</td>
+				<td>{{ nameplate.date_created.date() }}</td>
+			</tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+{% endblock %}

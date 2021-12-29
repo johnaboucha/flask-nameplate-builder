@@ -33,7 +33,7 @@
 		<div class="body has-image">
 			{% if nameplate.photo %}				
 				<div class="profile-image">
-					<img src="{{ url_for('static', filename='/uploads/'+nameplate.photo ) }}">
+					<img src="{{ url_for('static', filename='uploads/'+nameplate.photo ) }}">
 				</div>
 			{% endif %}	
             <div class="data">
@@ -45,8 +45,10 @@
                         {{ nameplate.hours }}<br><span></span>
                     </div>
                     <div class="email"><i class="fa fa-envelope" aria-hidden="true"></i> {{ nameplate.email }}</div>
-                    <div class="phone"><i class="fa fa-phone" aria-hidden="true"></i>  {{ nameplate.phone }}</div>
-                </div>
+                    {% if nameplate.phone %}
+						<div class="phone"><i class="fa fa-phone" aria-hidden="true"></i>  {{ nameplate.phone }}</div>
+					{% endif %}
+				</div>
             </div>
 			</div>
 		

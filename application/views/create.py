@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, flash
-from flask_login import login_required
+from flask_login import login_required, current_user
 from application import app, db
 from application.models import Nameplate
 from flask_uploads import IMAGES, UploadSet, configure_uploads
@@ -30,6 +30,8 @@ def create():
 		college = request.form['college']
 		department = request.form['department']
 
+		user_id = current_user.get_id()
+
 		new_nameplate = Nameplate(
 			person_name=person_name,
 			slug=slug,
@@ -39,6 +41,7 @@ def create():
 			hours=hours,
 			college=college,
 			department=department,
+			created_by=user_id,
 		)
 
 		if 'photo' in request.files:
