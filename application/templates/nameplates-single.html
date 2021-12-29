@@ -30,12 +30,12 @@
 			<div class="maroon"></div>
 		</div>
 							
-		<div class="body has-image">				
-			<div class="profile-image">
-                {% if nameplate.photo %}
-                    <img src="{{ url_for('static', filename='/uploads/'+nameplate.photo ) }}">
-                {% endif %}
-            </div>				
+		<div class="body has-image">
+			{% if nameplate.photo %}				
+				<div class="profile-image">
+					<img src="{{ url_for('static', filename='/uploads/'+nameplate.photo ) }}">
+				</div>
+			{% endif %}	
             <div class="data">
                 <h1 class="name"><span style="font-size: 40px;">{{ nameplate.person_name }}</span></h1>
                 <div class="details">

@@ -37,6 +37,7 @@ def view_nameplates():
 
     return render_template('nameplates.html', nameplates=nameplates)
 
+
 @app.route('/nameplates/<slug>/delete')
 def delete(slug):
 	nameplate_to_delete = Nameplate.query.filter_by(slug=slug).first()
@@ -59,9 +60,11 @@ def delete(slug):
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
+	form = NameplateForm()
+
 	nameplate = Nameplate.query.get_or_404(id)
 
-	if request.method == 'POST':
+	if request.method == 'POST' and form.validate_on_submit():
 		nameplate.person_name = request.form['name']
 		nameplate.slug = request.form['slug']
 		nameplate.title = request.form['title']
@@ -83,6 +86,17 @@ def update(id):
 					photos.save(request.files['photo'])
 			else:
 				nameplate.photo = None
+
+			if request.form.get('removePhotoCheckbox'):
+				try:
+					image_to_delete = nameplate.photo
+					if os.path.exists(app.static_folder+'/uploads/'+image_to_delete):
+						os.remove(app.static_folder+'/uploads/'+image_to_delete)
+				except:
+					print("Editing Nameplate | Image not found to be delete")
+				
+				nameplate.photo = None
+
 			db.session.commit()
 			return redirect('/nameplates/'+request.form['slug'])
 		except:

@@ -32,6 +32,11 @@ img {
     margin-bottom: 20px;
 }
 
+img#edit-form-image {
+	max-height: 200px;
+	margin-bottom: 0px;
+}
+
 header, nav, main, footer {
     padding: 2px calc((100% - 800px) / 2) 0;
 }
