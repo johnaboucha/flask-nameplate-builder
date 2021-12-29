@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, abort, flash
 from application import app, db
 from application.models import Nameplate
 from flask_uploads import IMAGES, UploadSet, configure_uploads
+from flask_login import current_user
 from werkzeug.utils import secure_filename
 from application.helpers import allowed_file
 from application.forms import NameplateForm
@@ -10,6 +11,7 @@ import os
 app.config['UPLOADED_PHOTOS_DEST'] = "uploads"
 photos = UploadSet("photos", IMAGES)
 configure_uploads(app, photos)
+
 
 @app.route("/nameplates/<slug>/edit")
 def edit_nameplate(slug):
@@ -21,14 +23,20 @@ def edit_nameplate(slug):
 	else:
 		return render_template('nameplates-single-edit.html', nameplate=nameplate, form=form)
 
+
 @app.route("/nameplates/<slug>")
 def view_single_nameplate(slug):
-    nameplate = Nameplate.query.filter_by(slug=slug).first()
+	nameplate = Nameplate.query.filter_by(slug=slug).first()
+	can_delete = False
 
-    if nameplate == None:
-        abort(404)
-    else:
-        return render_template('nameplates-single.html', nameplate=nameplate)
+	if current_user.is_authenticated:
+		if nameplate.created_by == current_user.id or current_user.is_admin == True:
+			can_delete = True
+
+	if nameplate == None:
+		abort(404)
+	else:
+		return render_template('nameplates-single.html', nameplate=nameplate, can_delete=can_delete)
 
 
 @app.route("/nameplates")

@@ -3,12 +3,12 @@
 {% block head %}Profile{% endblock %}
 
 {% block body %}
-	<h2>User Profile</h2>
+	<h2>My Profile</h2>
 	<p>Username: {{ user.username }}</p>
 	<p>Email: {{ user.email }}</p>
 	<p>Member since: {{ user.date_created|make_date }} </p>
 	<hr>
-	<h2>Nameplates created by: {{ user.username }}</h2>
+	<h2>My Nameplates</h2>
 	{% if nameplates %}
 	<table class="table nameplate-list">
 		<thead>
