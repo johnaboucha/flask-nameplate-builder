@@ -6,12 +6,12 @@ Nameplate Builder is an Python/Flask app that allows users to create and print n
 - CSS print style formats the nameplate to fit
 - Fast, simple, and fun
 
-![paper nameplate](https://github.com/johnaboucha/flask-nameplates/blob/main/static/nameplate.jpg)
+![paper nameplate](/application/static/app-images/nameplate.jpg)
 
 ## Limitations:
 
 The app is designed for a specific nameplate style and format to fit the organization's color 
 and design standards. Additional styles could be added with additional CSS and template files.
 
-![paper nameplate](https://github.com/johnaboucha/flask-nameplates/blob/main/static/nameplate2.jpg)
+![paper nameplate](/application/static/app-images/nameplate2.jpg)
  
